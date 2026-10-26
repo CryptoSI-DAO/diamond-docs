@@ -1,0 +1,71 @@
+---
+title: Introduction
+sidebar_position: 1
+slug: /
+---
+
+# Introduction 💎
+
+> *Paper hands fund diamond hands. On-chain. Forever.*
+
+**Diamond Hands Protocol (DHP) is a fully deployed, admin-free vault protocol that converts trading friction into holder rewards.** Every vault wraps one ERC-20 token. Entering costs a fixed **5%** tax; leaving costs a fixed **10%**. Of every tax collected:
+
+- **80%** is distributed pro-rata to remaining holders, in the underlying token
+- **10%** is permanently locked out of supply (burn-by-accounting)
+- **10%** funds the DAO and the vault's creator and platform partners
+
+There is no yield source, no treasury strategy and no team payoff — value flows from churn to conviction, mechanically, on-chain.
+
+## Key facts
+
+| Property | Value |
+|---|---|
+| **Protocol version (live)** | v1.4.0 — #27 free-market creation · #28 CRDD minting tier · #29 partner revenue split |
+| **Chains (mainnet)** | Base (8453) · Ethereum (1) · BNB Chain (56) · Robinhood Chain (4663) · Arc (5042, USDC-gas) |
+| **Contract addresses** | Identical on all five chains (deterministic deploys) |
+| **Factory** | `0x64BE13cE698684846Ae0642c1c63bb5eDE8F6929` |
+| **Vault implementation** | `0x75a7Fee6e8c17F6A7C39136C69A869fe99961D94` |
+| **Fee collector** | `0x0D48743923D8fcE041325F98B5Ce884a323f5499` |
+| **Vault standard** | ERC-4626-style share accounting per EIP-1167 clone; divergences documented for integrators |
+| **Creation fee** | Exactly 0.004 ETH per vault → DAO treasury |
+| **Governance** | Factory ownership **renounced on all five chains** (2026-09-22); vaults have **no admin surface at all** |
+| **Verification** | Sourcify `match`/`exact_match` on all 15 contract/chain pairs; Blockscout-verified on Base |
+| **App / web** | [app.dhp.cryptosidao.org](https://app.dhp.cryptosidao.org) · [dhp.cryptosidao.org](https://dhp.cryptosidao.org) |
+
+**One-sentence summary:** DHP is a permissionless factory of self-contained, key-less token vaults where the exit tax is the product: the 10% you pay to leave is split 80/10/10 between the holders who stayed, the permanent lock, and the protocol's partners.
+
+## The problem & the thesis
+
+Token communities leak value through churn. Every panic-sell dumps on the holders who stayed; every "reward" pool eventually gets farmed and deserted. DHP makes the churn itself fund the conviction.
+
+| The problem | The DHP answer |
+|---|---|
+| **Exit asymmetry** — sellers exit freely while holders absorb the dump | **Tax the exit, not the victim** — a fixed 10% leave-tax is paid by whoever leaves, into a pool owned by whoever stays |
+| **Value extraction** — team taxes ship value out | **Rewards in kind** — dividends are paid in the underlying token; no second token to dump, no inflation |
+| **Admin risk** — mutable taxes, pause keys, upgrade keys | **Remove the admin** — no pause, no setter, no upgrade; the factory is renounced. The code is the policy |
+| **Fake yield** — APYs that are dilution or marketing budget | **Burn by accounting** — 10% of every tax is locked out of backing forever; no yield is promised because none exists |
+
+## What DHP is — and is not
+
+| Diamond Hands Protocol **IS** | Diamond Hands Protocol is **NOT** |
+|---|---|
+| A permissionless vault factory: any wallet can create a vault for any qualifying ERC-20 | A yield protocol — there is no external yield source of any kind |
+| A dividend engine: taxes accrue pro-rata to holders, claimable in the underlying token | An investment product or a promise of profit — payouts depend entirely on future churn |
+| A deflationary mechanism: every tax permanently locks 10% of itself out of backing | A trading protocol — vaults never swap, stake, lend or touch your tokens beyond holding them |
+| A key-less system: vaults expose zero admin functions; factory ownership is renounced | Governed by a team — there are no team keys, no treasury control over vaults, no upgrade path |
+
+:::tip Design axiom
+Everything a future "bad actor" could want to do — raise taxes, redirect dividends, pause withdrawals, mint shares, redirect the burn — is not merely forbidden; **there is no function for it**. The attack surface is deleted, not protected.
+:::
+
+## Where to go next
+
+- [Architecture](/docs/how-it-works/architecture) — the three contracts and how vaults are born
+- [The Tax Engine](/docs/how-it-works/tax-engine) — the fixed 5/10 rates and the six-way split
+- [Trust Architecture](/docs/how-it-works/trust-architecture) — who can do what (spoiler: on vaults, nobody)
+- [Deployed Chains](/docs/deployments/chains) — every address, every chain
+- [FAQ](/docs/guides/faq) — quick answers
+
+:::warning Not financial advice
+This documentation is for information only. Every Diamond Hands Vault is a **zero-sum game by design**: payouts come from other users' taxes, not from yield. Users can lose tokens. See [Risk Disclosure](/docs/security/risk-disclosure).
+:::
